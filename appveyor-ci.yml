@@ -3,6 +3,10 @@
 #
 
 
+clone_depth: 1
+
+
+
 environment:
 
   GIT_SCRIPT: BlossomSeas
