@@ -3,7 +3,7 @@ $LAST_HASH = git log ${env:APPVEYOR_REPO_BRANCH} -1 --format="%H"
 
 
 # Reset shallow state
-git reset --hard
+git reset ${env:APPVEYOR_REPO_BRANCH} --hard
 git fetch origin ${env:APPVEYOR_REPO_BRANCH} --depth=1 --no-tags --quiet
 
 
