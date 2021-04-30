@@ -8,7 +8,7 @@ $LAST_HASH = git log ${env:APPVEYOR_REPO_BRANCH} -1 --format="%H"
 
 do {
   # git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=100 --no-tags --quiet
-  git fetch --deepen=100 --no-tags --quiet
+  git fetch --depth=100 --no-tags --quiet
 
 
   $HASH_LIST = git log $LAST_HASH -100 --format="%H"
