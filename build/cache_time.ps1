@@ -1,4 +1,5 @@
 $LAST_HASH = git log ${env:APPVEYOR_REPO_BRANCH} -1 --format="%H"
+return
 
 
 
