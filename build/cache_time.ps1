@@ -1,14 +1,15 @@
 $LAST_HASH = git log ${env:APPVEYOR_REPO_BRANCH} -1 --format="%H"
-return
+
+
+
+# Reset shallow state
+git reset --hard
+git fetch origin ${env:APPVEYOR_REPO_BRANCH} --depth=1 --no-tags --quiet
 
 
 
 #############################################
 
-
-
-git reset --hard
-git fetch origin ${env:APPVEYOR_REPO_BRANCH} --depth=1 --no-tags --quiet
 
 
 do {
