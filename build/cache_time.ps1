@@ -7,9 +7,12 @@ return
 
 
 
+git reset --hard
+git fetch origin ${env:APPVEYOR_REPO_BRANCH} --depth=1 --no-tags --quiet
+
+
 do {
-  # git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=100 --no-tags --quiet
-  git fetch --depth=100 --no-tags --quiet
+  git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=100 --no-tags --quiet
 
 
   $HASH_LIST = git log $LAST_HASH -100 --format="%H"
