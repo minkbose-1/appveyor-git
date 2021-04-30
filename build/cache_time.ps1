@@ -7,10 +7,11 @@ $LAST_HASH = git log ${env:APPVEYOR_REPO_BRANCH} -1 --format="%H"
 
 
 do {
-  git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=25 --no-tags --quiet
+  # git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=100 --no-tags --quiet
+  git fetch --deepen=100 --no-tags --quiet
 
 
-  $HASH_LIST = git log $LAST_HASH -25 --format="%H"
+  $HASH_LIST = git log $LAST_HASH -100 --format="%H"
 
 
   ForEach( $LAST_HASH in $HASH_LIST ) {
