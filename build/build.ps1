@@ -86,7 +86,7 @@ echo "1"
 
 while (1) {
 echo "2"
-  $LAST_COMMIT = git rev-list --max-parents=0 LAST_COMMIT
+  $LAST_COMMIT = git rev-list --max-parents=0 $LAST_COMMIT
 echo "3"
   $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
 echo "4"
