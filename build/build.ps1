@@ -81,7 +81,7 @@ $global:REPO_DEFAULT_TIME = git log $REPO_DEFAULT_HASH -1 --format="%ci"
 
 echo "444"
 # Unshallow to merge-base
-$LAST_COMMIT = HEAD
+$LAST_COMMIT = "HEAD"
 echo "1"
 
 while (1) {
