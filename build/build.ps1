@@ -6,7 +6,7 @@ run_script "build/helper.ps1"
 
 
 
-$global:MERGE_DEPTH = 500
+# $global:MERGE_DEPTH = 500
 
 
 
@@ -83,12 +83,18 @@ $LAST_COMMIT = HEAD
 
 while (1) {
   $LAST_COMMIT = git rev-list --max-parents=0 LAST_COMMIT
+  $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
 
-  git log $LAST_COMMIT -1 --format="%ci"
 
-  if ($LAST_COMMIT -Gt $REPO_MASTER_TIME) {
-    git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=25 --no-tags --quiet
+  echo $LAST_COMMIT
+  echo $LAST_TIME
+
+  if ($LAST_TIME -Le $REPO_MASTER_TIME) {
+    break
   }
+
+
+  git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=25 --no-tags --quiet
 }
 
 
