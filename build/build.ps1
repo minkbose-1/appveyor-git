@@ -73,11 +73,23 @@ $global:REPO_DEFAULT_HASH = $(git ls-remote "https://github.com/${env:APPVEYOR_R
 
 git fetch origin $REPO_DEFAULT_HASH --depth=1 --no-tags --quiet
 
-
 $global:REPO_DEFAULT_TIME = git log $REPO_DEFAULT_HASH -1 --format="%ci"
 
 
-git fetch origin ${env:APPVEYOR_REPO_BRANCH} --shallow-since=$REPO_DEFAULT_TIME --quiet
+
+
+# Unshallow to merge-base
+$LAST_COMMIT = HEAD
+
+while (1) {
+  $LAST_COMMIT = git rev-list --max-parents=0 LAST_COMMIT
+
+  git log $LAST_COMMIT -1 --format="%ci"
+
+  if ($LAST_COMMIT -Gt $REPO_MASTER_TIME) {
+    git fetch origin ${env:APPVEYOR_REPO_BRANCH} --deepen=25 --no-tags --quiet
+  }
+}
 
 
 
