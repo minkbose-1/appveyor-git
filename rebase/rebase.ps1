@@ -5,12 +5,12 @@ git fetch origin --no-tags --shallow-since=${REPO_MASTER_TIME}
 
 
 # Remove CI commits
-if( [int] $env:GIT_ERASE -Ne 0 ) {
-  git checkout -f origin/${env:APPVEYOR_HAVE_7ZIP;_7ZIP_ST;}
+if ([int] $env:GIT_ERASE -Ne 0) {
+  git checkout -f origin/${env:APPVEYOR_REPO_BRANCH}
 
   git reset --hard HEAD~${env:GIT_ERASE}
 
-  git push -f origin HEAD:${env:APPVEYOR_HAVE_7ZIP;_7ZIP_ST;}
+  git push -f origin HEAD:${env:APPVEYOR_REPO_BRANCH}
 }
 
 
@@ -47,7 +47,7 @@ if( $GIT_UPSTREAM -Eq $Null ) {
 
 
 # Upstream repo
-$REPO_BRANCH = ( $REPO_HTML -Split "<span class=`"css-truncate-target`" data-menu-button>(.+)</span>" )[1]
+$REPO_BRANCH = ($REPO_HTML -Split "<span class=`"css-truncate-target`" data-menu-button>(.+)</span>")[1]
 
 
 
@@ -57,11 +57,10 @@ $REPO_BRANCH = ( $REPO_HTML -Split "<span class=`"css-truncate-target`" data-men
 
 # Clone upstream repo
 git remote add upstream "https://github.com/${GIT_UPSTREAM}.git"
-git fetch upstream ${REPO_BRANCH}:upstream --no-tags --depth=100 --quiet
 
 
-while( (git merge-base upstream/${REPO_BRANCH} origin/${REPO_BRANCH}) -Eq $Null ) {
-  git fetch upstream ${REPO_BRANCH}:upstream --deepen=100 --quiet
+while ((git merge-base upstream/${REPO_BRANCH} origin/${REPO_BRANCH}) -Eq $Null) {
+  git fetch upstream ${REPO_BRANCH}:upstream --deepen=25 --quiet
 }
 
 
@@ -74,8 +73,8 @@ while( (git merge-base upstream/${REPO_BRANCH} origin/${REPO_BRANCH}) -Eq $Null 
 $BRANCHES = git branch -r | Select-String -NotMatch "upstream"
 
 
-foreach( $BRANCH in $BRANCHES ) {
-  $BRANCH = ( ($BRANCH -Replace '(^\s+|\s+$)','') -Split '/' )[1]
+foreach ($BRANCH in $BRANCHES) {
+  $BRANCH = ( ($BRANCH -Replace '(^\s+|\s+$)','') -Split '/')[1]
   echo "`n${BRANCH}"
 
 
@@ -85,7 +84,7 @@ foreach( $BRANCH in $BRANCHES ) {
 
 
   # Ignore orphan branches
-  if( (git merge-base upstream/${REPO_BRANCH} origin/${BRANCH}) -Eq $Null ) {
+  if ((git merge-base upstream/${REPO_BRANCH} origin/${BRANCH}) -Eq $Null) {
     continue
   }
 
@@ -96,7 +95,7 @@ foreach( $BRANCH in $BRANCHES ) {
 
 
   # Clean previous rebase
-  if( (Test-Path -Path ".git/rebase-merge") -Eq $True ) {
+  if ((Test-Path -Path ".git/rebase-merge") -Eq $True) {
     Remove-Item -Recurse -Force ".git/rebase-merge"
   }
 
@@ -108,12 +107,12 @@ foreach( $BRANCH in $BRANCHES ) {
 
 
   # Merge problem
-  if( $? -Eq $False ) {
+  if ($? -Eq $False) {
     git diff --diff-filter=U
 
 
     # Stop on conflicts
-    if( [string] ${env:GIT_FORCE} -Ne "yes" ) {
+    if ([string] ${env:GIT_FORCE} -Ne "yes") {
       throw "${BRANCH}: rebase failure"
     }
 
@@ -139,7 +138,7 @@ foreach( $BRANCH in $BRANCHES ) {
 
 
   # Shallow clone problem
-  if( $? -Eq $False ) {
+  if ($? -Eq $False) {
     echo "---  Full unshallow  ---"
 
     git fetch origin --no-tags --unshallow
@@ -147,7 +146,7 @@ foreach( $BRANCH in $BRANCHES ) {
   }
 
 
-  if( $? -Eq $False ) {
+  if ($? -Eq $False) {
     throw "${BRANCH}: rebase failure"
   }
 }
