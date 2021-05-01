@@ -40,7 +40,7 @@ $env:SOLUTION = Split-Path ${env:SOLUTION} -Leaf
 #####################################
 
 
-
+echo "111"
 cd ${env:APPVEYOR_BUILD_FOLDER}
 
 
@@ -62,6 +62,7 @@ git config --local remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 
 
+echo "222"
 $global:REPO_DEFAULT_BRANCH = $(git ls-remote --symref https://github.com/${env:APPVEYOR_REPO_NAME} HEAD | `
                                 awk -F"[:/\\t]*" '/ref/ { print $4 }')
 
@@ -71,13 +72,14 @@ $global:REPO_DEFAULT_HASH = $(git ls-remote "https://github.com/${env:APPVEYOR_R
 
 
 
+echo "333"
 git fetch origin $REPO_DEFAULT_HASH --depth=1 --no-tags --quiet
 
 $global:REPO_DEFAULT_TIME = git log $REPO_DEFAULT_HASH -1 --format="%ci"
 
 
 
-
+echo "444"
 # Unshallow to merge-base
 $LAST_COMMIT = HEAD
 echo "1"
