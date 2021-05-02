@@ -8,7 +8,7 @@ function global:git_merge($branch) {
   $LAST_COMMIT = "HEAD"
 
   while (1) {
-    $LAST_COMMIT = git rev-list --date-order --branches=${branch} --max-parents=0 $LAST_COMMIT
+    $LAST_COMMIT = git rev-list --date-order --reverse --branches="${branch}" --max-parents=0 $LAST_COMMIT
     $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
 
 
