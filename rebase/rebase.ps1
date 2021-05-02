@@ -38,7 +38,7 @@ $GIT_UPSTREAM = ( `
 
 
 # Clone fork
-if( $GIT_UPSTREAM -Eq $Null ) {
+if ($GIT_UPSTREAM -Eq $Null) {
   $GIT_UPSTREAM = ( `
                     ($REPO_HTML -Split "<a title=")[1] `
                     -Split "`"https://github.com/(.+)`" role=`"link`""
@@ -48,6 +48,8 @@ if( $GIT_UPSTREAM -Eq $Null ) {
 
 # Upstream repo
 $REPO_BRANCH = ($REPO_HTML -Split "<span class=`"css-truncate-target`" data-menu-button>(.+)</span>")[1]
+
+echo $REPO_BRANCH
 
 
 
@@ -74,7 +76,7 @@ $BRANCHES = git branch -r | Select-String -NotMatch "upstream"
 
 
 foreach ($BRANCH in $BRANCHES) {
-  $BRANCH = ( ($BRANCH -Replace '(^\s+|\s+$)','') -Split '/')[1]
+  $BRANCH = (($BRANCH -Replace '(^\s+|\s+$)','') -Split '/')[1]
   echo "`n${BRANCH}"
 
 
