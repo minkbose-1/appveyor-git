@@ -10,6 +10,8 @@ function global:git_merge($branch) {
     $LAST_COMMIT = git rev-list --branches=${branch} --max-parents=0 $LAST_COMMIT
     $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
 
+    echo $LAST_COMMIT
+    echo $LAST_TIME
 
     if ($LAST_TIME -Le $REPO_MASTER_TIME) {
       break
