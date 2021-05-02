@@ -1,9 +1,9 @@
 function global:git_merge($branch) {
-  git log origin/${branch} -500
 
 
   # git fetch origin ${branch} --shallow-since=$REPO_DEFAULT_TIME --quiet
   git fetch origin ${branch} --depth=1 --no-tags
+  git log origin/${branch} -500
 
 
   # Unshallow to merge-base
