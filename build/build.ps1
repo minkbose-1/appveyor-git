@@ -6,10 +6,6 @@ run_script "build/helper.ps1"
 
 
 
-# $global:MERGE_DEPTH = 500
-
-
-
 if( ${env:PROJECT} -Eq $Null ) {
   $env:PROJECT = ${env:APPVEYOR_PROJECT_NAME}
 }
@@ -40,8 +36,9 @@ $env:SOLUTION = Split-Path ${env:SOLUTION} -Leaf
 #####################################
 
 
-echo "111"
+
 cd ${env:APPVEYOR_BUILD_FOLDER}
+
 
 
 if (Test-Path ".gitmodules") {
@@ -49,6 +46,7 @@ if (Test-Path ".gitmodules") {
 
   echo "`n`n"
 }
+
 
 
 # After submodules, not before
@@ -62,7 +60,6 @@ git config --local remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 
 
 
-echo "222"
 $global:REPO_DEFAULT_BRANCH = $(git ls-remote --symref https://github.com/${env:APPVEYOR_REPO_NAME} HEAD | `
                                 awk -F"[:/\\t]*" '/ref/ { print $4 }')
 
@@ -72,27 +69,19 @@ $global:REPO_DEFAULT_HASH = $(git ls-remote "https://github.com/${env:APPVEYOR_R
 
 
 
-echo "333"
 git fetch origin $REPO_DEFAULT_HASH --depth=1 --no-tags --quiet
 
 $global:REPO_DEFAULT_TIME = git log $REPO_DEFAULT_HASH -1 --format="%ci"
 
 
 
-echo "444"
 # Unshallow to merge-base
 $LAST_COMMIT = "HEAD"
-echo "1"
 
 while (1) {
-echo "2"
   $LAST_COMMIT = git rev-list --max-parents=0 $LAST_COMMIT
-echo "3"
   $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
-echo "4"
 
-  echo $LAST_COMMIT
-  echo $LAST_TIME
 
   if ($LAST_TIME -Le $REPO_MASTER_TIME) {
     break
