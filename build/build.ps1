@@ -79,7 +79,7 @@ $global:REPO_DEFAULT_TIME = git log $REPO_DEFAULT_HASH -1 --format="%ci"
 $LAST_COMMIT = "HEAD"
 
 while (1) {
-  $LAST_COMMIT = git rev-list --max-parents=0 $LAST_COMMIT
+  $LAST_COMMIT = git rev-list --date-order --max-parents=0 $LAST_COMMIT
   $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
 
 
