@@ -7,6 +7,8 @@ function global:git_merge($branch) {
   while ((git merge-base origin/${branch} origin/${APPVEYOR_REPO_BRANCH}) -Eq $Null) {
     git fetch origin ${branch}:origin --deepen=25 --quiet
   }
+  git log ${branch} -500
+
 
   while (0) {
     $LAST_COMMIT = git rev-list --date-order --reverse --branches="${branch}" --max-parents=0 $LAST_COMMIT
