@@ -7,7 +7,7 @@ function global:git_merge($branch) {
   while ((git merge-base origin/${branch} origin/${APPVEYOR_REPO_BRANCH}) -Eq $Null) {
     git fetch origin ${branch}:origin --deepen=25
   }
-  git merge-base ${branch} ${APPVEYOR_REPO_BRANCH}
+  git merge-base "origin/${branch}" "origin/${APPVEYOR_REPO_BRANCH}"
   git log origin/${branch} -500
 
 
