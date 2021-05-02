@@ -59,6 +59,7 @@ echo $REPO_BRANCH
 
 # Clone upstream repo
 git remote add upstream "https://github.com/${GIT_UPSTREAM}.git"
+git fetch upstream ${REPO_BRANCH}:upstream --depth=1 --quiet
 
 
 while ((git merge-base upstream/${REPO_BRANCH} origin/${REPO_BRANCH}) -Eq $Null) {
