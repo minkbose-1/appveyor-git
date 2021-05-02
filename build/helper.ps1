@@ -1,11 +1,11 @@
 function global:git_merge($branch) {
   # git fetch origin ${branch} --shallow-since=$REPO_DEFAULT_TIME --quiet
-  git fetch origin ${branch} --depth=1 --no-tags --quiet
+  git fetch origin ${branch} --depth=1 --no-tags
 
 
   # Unshallow to merge-base
   while ((git merge-base origin/${branch} origin/${APPVEYOR_REPO_BRANCH}) -Eq $Null) {
-    git fetch origin ${branch}:origin --deepen=25 --quiet
+    git fetch origin ${branch}:origin --deepen=25
   }
   git log origin/${branch} -500
 
