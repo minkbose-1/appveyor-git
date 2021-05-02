@@ -5,7 +5,7 @@ function global:git_merge($branch) {
 
   # Unshallow to merge-base
   while ((git merge-base origin/${branch} origin/${APPVEYOR_REPO_BRANCH}) -Eq $Null) {
-    git fetch upstream ${REPO_BRANCH}:upstream --deepen=25 --quiet
+    git fetch origin ${branch}:origin --deepen=25 --quiet
   }
 
   while (0) {
