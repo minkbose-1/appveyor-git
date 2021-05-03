@@ -1,36 +1,12 @@
 function global:git_merge($branch) {
 
+  # Unshallow to merge point
+  git fetch origin ${branch} --depth=1 --no-tags --quiet
 
-  # git fetch origin ${branch} --shallow-since=$REPO_DEFAULT_TIME --quiet
-  git fetch origin ${branch} --depth=1 --no-tags
-  git log origin/${branch} -500
-
-
-  # Unshallow to merge-base
   while ((git merge-base origin/${branch} origin/${env:APPVEYOR_REPO_BRANCH}) -Eq $Null) {
     git fetch origin ${branch}:origin --deepen=25
   }
-  echo " ================================ "
-  git merge-base "origin/${branch}" "origin/${env:APPVEYOR_REPO_BRANCH}"
-  # git log origin/${branch} -500
 
-
-  while (0) {
-    $LAST_COMMIT = git rev-list --date-order --reverse --branches="${branch}" --max-parents=0 $LAST_COMMIT
-    $LAST_TIME = git log $LAST_COMMIT -1 --format="%ci"
-
-
-    echo $LAST_COMMIT
-    echo $LAST_TIME
-
-
-    if ($LAST_TIME -Le $REPO_MASTER_TIME) {
-      break
-    }
-
-
-    git fetch origin ${branch} --deepen=25 --no-tags --quiet
-  }
 
 
   git merge origin/${branch} --quiet
