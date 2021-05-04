@@ -38,17 +38,13 @@ if ($CACHE_LIST -Eq $Null) {
 
 
 
+# Cache new files
+git add cache.zip
+git commit -m "cache" --quiet
+
+
 # Keep untracked new files
 # git reset $global:BRANCH_HEAD --quiet
-
-
-
-# Use separate, non-rebase branch
-git checkout --orphan ${env:APPVEYOR_REPO_BRANCH}_cache_temp --force --quiet
-
-
-# Remove all project files
-git reset
 
 
 
@@ -56,11 +52,14 @@ git reset
 
 
 
+# Use separate, non-rebase branch
+git checkout --orphan ${env:APPVEYOR_REPO_BRANCH}_cache_temp --force --quiet
+git reset
+
+
+
 # Override gitignore
 git add -f "cache.zip"
-
-
-
 git commit -m "CI: build cache" --quiet
 
 
