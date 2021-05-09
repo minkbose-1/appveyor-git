@@ -1,10 +1,10 @@
 function global:git_merge($branch) {
 
   # Unshallow to merge point
-  git fetch origin ${branch} --depth=1 --no-tags
+  git fetch origin ${branch} --depth=1 --no-tags --quiet
 
   while ((git merge-base origin/${branch} origin/${env:APPVEYOR_REPO_BRANCH}) -Eq $Null) {
-    git fetch origin ${branch}:origin --deepen=25
+    git fetch origin ${branch}:origin --deepen=25 --quiet
   }
 
 
