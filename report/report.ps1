@@ -22,6 +22,7 @@ while (1) {
 
 
   if ($? -Eq $False) {
+    echo $url
     break
   }
 
@@ -30,6 +31,7 @@ while (1) {
   # ===========================================
 
 
+  echo -Path "C:\list.txt"
 
   # Users
   foreach ( `
