@@ -45,6 +45,7 @@ while (1) {
 
 
     Start-Sleep -m $wait2
+    echo $repo
     curl -o "C:\repo.txt" "https://github.com/${env:USER}/$repo"
 
 
