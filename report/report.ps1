@@ -64,13 +64,14 @@ while (1) {
 
 
   # Organizations
+  #           -Pattern "/hovercard`" href=`"(.+)`" class=`"d-inline-block`">" `
   foreach ( `
     $repo in Select-String `
              -Path "C:\list.txt" `
-             -Pattern "/hovercard`" href=`"(.+)`" class=`"d-inline-block`">" `
+             -Pattern "data-hovercard-url=`"/${env:GIT_USER}/(.+)/hovercard`"" `
   ) {
     $repo = ( `
-              $repo -Split "/hovercard`" href=`"/${env:GIT_USER}/(.+)`" class=`"d-inline-block`">" `
+              $repo -Split "data-hovercard-url=`"/${env:GIT_USER}/(.+)/hovercard`"" `
             )[1]
 
 
