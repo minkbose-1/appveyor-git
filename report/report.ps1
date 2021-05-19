@@ -1,8 +1,8 @@
 $url = "https://github.com/${env:GIT_USER}?tab=repositories"
 
 
-$wait1 = 250
-$wait2 = 200
+$wait1 = 150
+$wait2 = 100
 
 
 
