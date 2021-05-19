@@ -30,7 +30,7 @@ while (1) {
   # ===========================================
 
 
-  echo "C:\list.txt"
+  Get-Content "C:\list.txt"
 
   # Users
   foreach ( `
