@@ -39,7 +39,7 @@ if ($CACHE_LIST -Eq $Null) {
 
 
 # Cache new files
-git add cache.zip
+git add -f cache.zip
 git commit -m "cache" --quiet
 
 
