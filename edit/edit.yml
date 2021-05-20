@@ -31,7 +31,6 @@ environment:
 build_script:
 
   - ps: |
-
       git reset --hard HEAD~1
 
 
@@ -42,6 +41,7 @@ build_script:
 
       try {
         iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:GIT_SCRIPT}/appveyor-git/raw/main/script/script.ps1") )
+
 
         run_script "rebase/shallow.ps1"
         run_script "edit/edit.ps1"
