@@ -49,8 +49,6 @@ if ($GIT_UPSTREAM -Eq $Null) {
 # Upstream repo
 $REPO_BRANCH = ($REPO_HTML -Split "<span class=`"css-truncate-target`" data-menu-button>(.+)</span>")[1]
 
-echo $REPO_BRANCH
-
 
 
 #################################################
