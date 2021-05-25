@@ -1,4 +1,4 @@
-curl -o "C:\gcc.txt" "https://github.com/brechtsanders/winlibs_mingw/releases/latest"
+curl -o "C:\gcc.txt" "https://github.com/brechtsanders/winlibs_mingw/releases"
 
 
 
@@ -9,7 +9,7 @@ $BUILD_VERSION = ( `
 
 
 
-if ($env:PLATFORM -Match "x86" -Eq $True) {
+if (${env:PLATFORM} -Match "x86" -Eq $True) {
   $BUILD_FILE = "winlibs-i686"
 }
 
@@ -38,7 +38,7 @@ $GCC_VERSION = ($BUILD_VERSION -Split "-")[0]
 
 
 $env:COMPILER_VERSION = "GCC version ${GCC_VERSION}"
-$env:PATH = "c:\mingw\bin;" + $env:PATH
+$env:PATH = "c:\mingw\bin;" + ${env:PATH}
 
 
 
@@ -57,7 +57,7 @@ curl -o "C:\mingw.7z" ("https://github.com/brechtsanders/winlibs_mingw/releases/
 
 
 
-if ($env:PLATFORM -Match "x86" -Eq $True) {
+if (${env:PLATFORM} -Match "x86" -Eq $True) {
   ren c:\mingw32 c:\mingw
 }
 
@@ -71,6 +71,7 @@ else {
 
 
 
+# Debugging
 # $env:BUILD = "mingw32-make -d -f `"${env:SOLUTION}`" platform=`"${env:PLATFORM}`""
 
 $env:BUILD = "mingw32-make -f `"${env:SOLUTION}`" platform=`"${env:PLATFORM}`""
