@@ -1,3 +1,5 @@
+# MinGW-w64 9.0.0 requires Windows Vista (GetTickCount64)
+
 $BUILD_VERSION = "11.1.0-12.0.0-8.0.2-r1"
 
 
