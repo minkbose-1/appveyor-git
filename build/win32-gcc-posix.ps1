@@ -24,7 +24,7 @@ $BUILD_FILE += ( `
                    (Get-Content "C:\gcc.txt" -Raw) `
                    -Split ("<a href=`"/brechtsanders/winlibs_mingw/releases/download/" `
                            + "${BUILD_VERSION}/${BUILD_FILE}(.+).7z`" rel=`"nofollow`"") `
-                 )[3] -Split ".7z" `
+                 )[1] -Split ".7z" `
                )[0]
 
 
