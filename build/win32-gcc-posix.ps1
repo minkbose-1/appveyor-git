@@ -1,7 +1,6 @@
 curl -o "C:\gcc.txt" "https://github.com/brechtsanders/winlibs_mingw/releases"
 
 
-echo "1"
 $BUILD_VERSION = ( `
                    (Get-Content "C:\gcc.txt" -Raw) `
                    -Split "/brechtsanders/winlibs_mingw/releases/download/(.+)/winlibs" `
@@ -18,7 +17,6 @@ else {
 }
 
 
-echo "2"
 $BUILD_FILE += ( `
                  ( `
                    (Get-Content "C:\gcc.txt" -Raw) `
@@ -32,7 +30,7 @@ $BUILD_FILE += ( `
 #####################################
 
 
-echo "3"
+
 $GCC_VERSION = ($BUILD_VERSION -Split "-")[0]
 
 
@@ -49,14 +47,9 @@ $env:PATH = "c:\mingw\bin;" + ${env:PATH}
 ren c:\mingw c:\mingw5
 
 
-echo "4"
-echo "https://github.com/brechtsanders/winlibs_mingw/releases/download/${BUILD_VERSION}/${BUILD_FILE}.7z"
-
 curl -o "C:\mingw.7z" ("https://github.com/brechtsanders/winlibs_mingw/releases/download/" `
                        + "${BUILD_VERSION}/${BUILD_FILE}.7z")
 
-
-echo "5"
 7z x c:\mingw.7z -oc:\ | Out-Null
 
 
@@ -74,7 +67,6 @@ else {
 #####################################
 
 
-echo "6"
 
 # Debugging
 # $env:BUILD = "mingw32-make -d -f `"${env:SOLUTION}`" platform=`"${env:PLATFORM}`""
