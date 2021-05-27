@@ -1,4 +1,5 @@
 function global:git_merge($branch) {
+  echo "Merging ${branch}"
 
   # Unshallow to merge point
   git fetch origin ${branch} --depth=1 --no-tags --quiet
@@ -48,6 +49,9 @@ function global:git_modify($file, $mode) {
 function global:git_resolve($branch, $mode, $file1, `
   $file2, $file3, $file4, $file5, $file6, $file7, $file8, $file9, $file10 `
 ) {
+  echo "Merging ${branch}"
+
+
   git fetch origin ${branch} --shallow-since=$REPO_DEFAULT_TIME --quiet
   git merge origin/${branch} --quiet
 
