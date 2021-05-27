@@ -49,10 +49,14 @@ $env:PATH = "c:\mingw\bin;" + ${env:PATH}
 ren c:\mingw c:\mingw5
 
 
+echo "4"
+echo "https://github.com/brechtsanders/winlibs_mingw/releases/download/${BUILD_VERSION}/${BUILD_FILE}.7z"
 
 curl -o "C:\mingw.7z" ("https://github.com/brechtsanders/winlibs_mingw/releases/download/" `
                        + "${BUILD_VERSION}/${BUILD_FILE}.7z")
 
+
+echo "5"
 7z x c:\mingw.7z -oc:\ | Out-Null
 
 
@@ -70,7 +74,7 @@ else {
 #####################################
 
 
-echo "4"
+echo "6"
 
 # Debugging
 # $env:BUILD = "mingw32-make -d -f `"${env:SOLUTION}`" platform=`"${env:PLATFORM}`""
