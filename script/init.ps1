@@ -4,6 +4,10 @@ function global:run_script($FILE) {
 
 
 
+###########################################
+
+
+
 Invoke-WebRequest -Uri "https://github.com/${env:GIT_SCRIPT}/appveyor-git/archive/${GIT_SCRIPT_HEAD}.zip" -OutFile "${env:APPVEYOR_BUILD_FOLDER}/../appveyor-git.zip"
 unzip "-DDqqo" "${env:APPVEYOR_BUILD_FOLDER}/../appveyor-git.zip" -d "${env:APPVEYOR_BUILD_FOLDER}/.."
 
