@@ -1,5 +1,12 @@
-function global:run_script($FILE) {
-  & "${APPVEYOR_GIT_FOLDER}/${FILE}"
+function global:run_script($File) {
+  $x = ($x -Split "/*(.+)~")[1]
+
+  if ($x -Ne $Null) {
+    $File = $x + ".ps1"
+  }
+
+
+  & "${APPVEYOR_GIT_FOLDER}/${File}"
 }
 
 
