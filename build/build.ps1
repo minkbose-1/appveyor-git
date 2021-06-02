@@ -115,4 +115,4 @@ echo( `
 
 
 
-run_script "build/git_edit.ps1"
+run_script "build/git_edit/git_edit.ps1"
