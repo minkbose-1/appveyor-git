@@ -1,5 +1,5 @@
 function global:run_script($File) {
-  $x = ($x -Split "/*(.+)~")[1]
+  $x = ($File -Split "/*(.+)~")[1]
 
   echo $x
 
