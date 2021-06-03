@@ -1,4 +1,4 @@
-cd ${APPVEYOR_GIT_FOLDER}/build/hexdump
+cd ${APPVEYOR_GIT_FOLDER}/build/tools/hexdump
 
 
 
