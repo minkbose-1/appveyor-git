@@ -56,9 +56,6 @@ else {
 
 
 
-# Debugging
-# $env:BUILD = "mingw32-make -d -f `"${env:SOLUTION}`" platform=`"${env:PLATFORM}`""
-
 $env:BUILD = "mingw32-make -f `"${env:SOLUTION}`" platform=`"${env:PLATFORM}`""
 
 
