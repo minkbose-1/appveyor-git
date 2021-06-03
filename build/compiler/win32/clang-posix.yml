@@ -3,12 +3,11 @@
 #
 
 
-clone_depth: 75
+clone_depth: 1
 
 
 
 environment:
-
   GIT_SCRIPT: BlossomSeas
 
 
@@ -34,21 +33,11 @@ artifacts:
 build_script:
 
   - ps: |
-
-      if (${env:GIT_SCRIPT} -Eq $Null) {
-        $env:GIT_SCRIPT = $env:APPVEYOR_REPO_COMMIT_AUTHOR
-      }
-
-
-
-      ##################################
-
-
-
       try {
         iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:GIT_SCRIPT}/appveyor-ci/raw/main/script/script.ps1") )
 
-        run_script "build/build.ps1"
+
+        run_script "build"
       }
 
 
