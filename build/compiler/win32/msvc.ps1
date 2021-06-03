@@ -18,6 +18,7 @@ if ( `
   )
 }
 
+
 else {
   $env:BUILD = ( `
     "mingw32-make -f `"${env:SOLUTION}`"" + `
