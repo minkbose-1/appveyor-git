@@ -98,4 +98,6 @@ while (1) {
 
 
 run_script "build/compiler"
+
+
 run_script "build/tools/git_edit"
