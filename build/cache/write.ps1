@@ -2,7 +2,7 @@ cd ${env:APPVEYOR_BUILD_FOLDER}
 
 
 
-run_script "build/cache/cache_time.ps1"
+run_script "build/cache/time.ps1"
 
 
 
