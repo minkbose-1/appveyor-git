@@ -97,22 +97,5 @@ while (1) {
 
 
 
-echo "Setting up compiler"
-
-
-run_script "build/${env:COMPILER}.ps1"
-
-
-echo( `
-  "`n`n`n" + `
-  "Compiler: ${env:COMPILER_VERSION}`n" + `
-  "`n`n" `
-)
-
-
-
-#####################################
-
-
-
-run_script "build/git_edit/git_edit.ps1"
+run_script "build/compiler"
+run_script "build/git_edit"
