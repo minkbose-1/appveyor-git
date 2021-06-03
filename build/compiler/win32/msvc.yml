@@ -3,13 +3,11 @@
 #
 
 
-
-clone_depth: 75
+clone_depth: 1
 
 
 
 environment:
-
   SCRIPT: BlossomSeas
 
 
