@@ -2,7 +2,7 @@ function global:run_script($File) {
   $y = ($File -Split "/*(.+)~")[1]
   $x = ($File -Split ".*/")[1]
 
-  echo "@ = ($File -Split \".*/\")[2]"
+  ($File -Split ".*/")[2]
   echo "File = $File"
   echo "x = $x"
   echo "y = $y"
