@@ -1,4 +1,4 @@
-cd ${APPVEYOR_GIT_FOLDER}/build/git_edit
+cd ${APPVEYOR_GIT_FOLDER}/build/tools/git_edit
 
 
 
