@@ -35,17 +35,11 @@ artifacts:
 build_script:
 
   - ps: |
-
-      if (${env:SCRIPT} -Eq $Null) {
-        $env:SCRIPT = $env:APPVEYOR_REPO_COMMIT_AUTHOR
-      }
-
-
-
       try {
         iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:SCRIPT}/appveyor-git/raw/main/script/script.ps1") )
 
-        run_script "build/build.ps1"
+
+        run_script "build"
       }
 
 
