@@ -6,6 +6,9 @@ run_script "build/cache/cache_time.ps1"
 
 
 
+#############################################
+
+
 
 echo "`n"
 echo "Saving build progress`n"
@@ -21,20 +24,6 @@ echo "Saving build progress`n"
 
 7z a "cache.zip" "-tzip" "-mx=1" "-y" "cache.hash" > $Null
 
-
-
-
-# $CACHE_LIST = git ls-files --others --exclude-standard
-# $CACHE_LIST += git ls-files --modified --exclude-standard
-
-
-# echo "`n"
-# echo $CACHE_LIST
-
-
-if ($CACHE_LIST -Eq $Null) {
-  # return
-}
 
 
 
