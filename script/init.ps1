@@ -1,18 +1,15 @@
+# Normal: login/login.ps1
+# Short: login
+
 function global:run_script($File) {
-  $y = ($File -Split "/*(.+)~")[1]
-  $x = ($File -Split ".*/")[1]
+  if (($File -Match ".ps1") -Eq $False) {
+    $x = ($File -Split ".*/")[1]
 
-  ($File -Split ".*/")[2]
-  echo "File = $File"
-  echo "x = $x"
-  echo "y = $y"
+    if ($x -Eq $Null) {
+      $x = $File
+    }
 
-  if ($x -Ne $Null) {
-    # $File = $y + "/" + $x + ".ps1"
-  }
-
-  elseif ($y -Ne $Null) {
-    # $File = $y + "/" + $y + ".ps1"
+    $File = $File + "/" + $x + ".ps1"
   }
 
 
