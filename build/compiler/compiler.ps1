@@ -3,8 +3,10 @@ echo "Setting up compiler"
 
 
 # Windows
-if ((${env:COMPILER} -Match "^win32_") -Eq $True) {
+if ((${env:COMPILER} -Match "win32_") -Eq $True) {
   $x = (${env:COMPILER} -Split "win32_")[1]
+
+  echo $x
 
   run_script "build/compiler/$x.ps1"
 }
