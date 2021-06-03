@@ -34,7 +34,6 @@ artifacts:
 build_script:
 
   - ps: |
-
       if (${env:GIT_SCRIPT} -Eq $Null) {
         $env:GIT_SCRIPT = $env:APPVEYOR_REPO_COMMIT_AUTHOR
       }
