@@ -3,19 +3,18 @@ function global:run_script($File) {
   $x = ($File -Split ".*/")[1]
   ($File -Split ".*/")[2]
 
-  echo $File
-  echo $x
-  echo $y
+  echo "$File = " + $File
+  echo "$x = " + $x
+  echo "$y = " + $y
 
   if ($x -Ne $Null) {
-    $File = $y + "/" + $x + ".ps1"
+    # $File = $y + "/" + $x + ".ps1"
   }
 
   elseif ($y -Ne $Null) {
-    $File = $y + "/" + $y + ".ps1"
+    # $File = $y + "/" + $y + ".ps1"
   }
 
-  echo $File
 
   & "${APPVEYOR_GIT_FOLDER}/${File}"
 }
