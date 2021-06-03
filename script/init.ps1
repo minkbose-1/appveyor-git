@@ -1,6 +1,8 @@
 function global:run_script($File) {
   $x = ($File -Split "/*(.+)~")[1]
 
+  echo $x
+
   if ($x -Ne $Null) {
     $File = $x + "/" + $x + ".ps1"
   }
