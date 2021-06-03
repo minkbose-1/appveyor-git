@@ -6,7 +6,7 @@ echo "Setting up compiler"
 if ((${env:COMPILER} -Match "win32-") -Eq $True) {
   $x = (${env:COMPILER} -Split "win32-")[1]
 
-  run_script "build/compiler/$x.ps1"
+  run_script "build/compiler/win32/$x.ps1"
 }
 
 
