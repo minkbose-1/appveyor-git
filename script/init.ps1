@@ -75,7 +75,7 @@ run_script "script/Invoke-Environment.ps1"
 $global:BRANCH_HEAD = git log --pretty=format:'%H' -1
 
 
-run_script "login/login.ps1"
+run_script "login"
 
 
 
