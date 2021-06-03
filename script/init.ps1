@@ -8,7 +8,7 @@ function global:run_script($File) {
     $File = $y + "/" + $x + ".ps1"
   }
 
-  else if ($y -Ne $Null) {
+  elseif ($y -Ne $Null) {
     $File = $y + "/" + $y + ".ps1"
   }
 
