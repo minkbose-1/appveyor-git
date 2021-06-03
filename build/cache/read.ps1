@@ -37,7 +37,7 @@ $LAST_HASH = (Get-Content -Path "cache.hash" -Raw) `
               -Replace "`r|`n",""
 
 
-if( $MASTER_HASH -Eq $LAST_HASH ) {
+if ($MASTER_HASH -Eq $LAST_HASH) {
   return
 }
 
@@ -72,7 +72,7 @@ echo $CACHE_LIST
 # Rebuild new files
 $NEW_TIME = $(Get-Date)
 
-ForEach( $File in $CACHE_LIST ) {
+ForEach ($File in $CACHE_LIST) {
   Set-ItemProperty -Path $File -Name LastWriteTime -Value $NEW_TIME -ErrorAction 'SilentlyContinue'
 }
 
