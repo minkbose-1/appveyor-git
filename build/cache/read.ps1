@@ -61,7 +61,8 @@ echo $MASTER_HASH
 
 
 # Current commit
-git fetch origin $MASTER_HASH --shallow-since=$LAST_DATE --no-tags --quiet
+# git fetch origin $MASTER_HASH --shallow-since=$LAST_DATE --no-tags --quiet
+git fetch origin $MASTER_HASH --shallow-since=$LAST_DATE --no-tags
 
 
 
