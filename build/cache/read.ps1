@@ -53,16 +53,13 @@ echo "Scanning new files`n"
 
 # Cache commit date
 git fetch origin $LAST_HASH --depth=1 --no-tags --quiet
-echo $LAST_HASH
 
 $LAST_DATE = git log $LAST_HASH -1 --format="%ci"
-echo $LAST_DATE
-echo $MASTER_HASH
+
 
 
 # Current commit
-# git fetch origin $MASTER_HASH --shallow-since=$LAST_DATE --no-tags --quiet
-git fetch origin $MASTER_HASH --shallow-since=$LAST_DATE --no-tags
+git fetch origin $MASTER_HASH --shallow-since=$LAST_DATE --no-tags --quiet
 
 
 
