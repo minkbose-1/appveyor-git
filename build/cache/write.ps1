@@ -16,7 +16,7 @@ echo "Saving build progress`n"
 
 
 7z a "cache.zip" "-tzip" "-mx=1" "-y" `
-  "-ir!.\*.d" ` "-ir!.\*.o" `
+  "-ir!.\*.d" "-ir!.\*.o" `
   "-ir!.\*.exe" "-ir!.\*.dll" `
   "-ir!.\*.obj" `
   "-ir!.\*.pdb" "-ir!.\*.ipdb" "-ir!.\*.iobj" `
