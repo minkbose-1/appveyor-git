@@ -48,7 +48,7 @@ git reset
 
 
 # Override gitignore
-if (Test-Path -Path "cache.zip" -Eq $True) {
+if ((Test-Path -Path "cache.zip") -Eq $True) {
   rm "cache.zip"
 }
 
