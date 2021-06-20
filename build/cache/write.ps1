@@ -15,21 +15,21 @@ echo "Saving build progress`n"
 
 
 
-7z a "cache.zip" "-tzip" "-mx=1" "-y" `
+7z a "../cache.zip" "-tzip" "-mx=1" "-y" `
   "-ir!.\*.d" "-ir!.\*.o" `
   "-ir!.\*.exe" "-ir!.\*.dll" `
   "-ir!.\*.obj" `
   "-ir!.\*.pdb" "-ir!.\*.ipdb" "-ir!.\*.iobj" `
   > $Null
 
-7z a "cache.zip" "-tzip" "-mx=1" "-y" "cache.hash" > $Null
+7z a "../cache.zip" "-tzip" "-mx=1" "-y" "cache.hash" > $Null
 
 
 
 
 # Cache new files
-git add -f cache.zip
-git commit -m "cache" --quiet
+# git add -f cache.zip
+# git commit -m "cache" --quiet
 
 
 # Keep untracked new files
@@ -48,6 +48,7 @@ git reset
 
 
 # Override gitignore
+mv "../cache.zip" "cache.zip"
 git add -f "cache.zip"
 git commit -m "CI: build cache" --quiet
 
