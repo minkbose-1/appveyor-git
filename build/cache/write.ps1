@@ -48,6 +48,10 @@ git reset
 
 
 # Override gitignore
+if (Test-Path -Path "cache.zip" -Eq $True) {
+  rm "cache.zip"
+}
+
 mv "../cache.zip" "cache.zip"
 git add -f "cache.zip"
 git commit -m "CI: build cache" --quiet
