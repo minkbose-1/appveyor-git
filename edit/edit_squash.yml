@@ -8,10 +8,6 @@ clone_depth: 2
 
 
 environment:
-
-  GIT_SCRIPT: BlossomSeas
-
-
   TITLE: "CI: custom build"
 
   LINE1: 
@@ -22,6 +18,7 @@ environment:
   GIT_EMAIL: 76566995+EvaMink@users.noreply.github.com
 
 
+  GIT_SCRIPT: BlossomSeas
   GIT_TOKEN:
     secure: nfDVTPJ5JKN66ly+Jk+VSnnSSCDe2ZsbF7zawNwKpZ4FGOhqpG2sJIBcEhi7orr2
 
