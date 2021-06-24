@@ -8,6 +8,7 @@ clone_depth: 1
 
 
 environment:
+
   COMPILER: win32-gcc-posix
   PROJECT: 
   SOLUTION: 
@@ -15,6 +16,7 @@ environment:
 
 
   GIT_SCRIPT: BlossomSeas
+
   GIT_TOKEN:
     secure: nfDVTPJ5JKN66ly+Jk+VSnnSSCDe2ZsbF7zawNwKpZ4FGOhqpG2sJIBcEhi7orr2
 
