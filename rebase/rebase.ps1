@@ -86,7 +86,11 @@ foreach ($BRANCH in $BRANCHES) {
 
   # Ignore orphan branches
   if ((git merge-base upstream/${REPO_BRANCH} origin/${BRANCH}) -Eq $Null) {
-    continue
+    git fetch origin ${BRANCH}:origin --deepen=100 --quiet
+
+    if ((git merge-base upstream/${REPO_BRANCH} origin/${BRANCH}) -Eq $Null) {
+      continue
+    }
   }
 
 
