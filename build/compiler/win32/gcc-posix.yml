@@ -21,6 +21,7 @@ environment:
     secure: nfDVTPJ5JKN66ly+Jk+VSnnSSCDe2ZsbF7zawNwKpZ4FGOhqpG2sJIBcEhi7orr2
 
 
+
   matrix:
     - Platform: windows_desktop_x86
     # - Platform: windows_desktop_x64
