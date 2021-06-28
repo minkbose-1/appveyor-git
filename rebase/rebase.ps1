@@ -86,7 +86,6 @@ foreach ($BRANCH in $BRANCHES) {
 
   # Ignore orphan branches
   if ((git merge-base upstream/${REPO_BRANCH} origin/${BRANCH}) -Eq $Null) {
-    echo "Orphan"
     continue
   }
 
@@ -104,14 +103,12 @@ foreach ($BRANCH in $BRANCHES) {
 
 
   # Apply rebase updates
-  echo "rebase test"
   git rebase upstream/${REPO_BRANCH}
 
 
 
   # Merge problem
   if ($? -Eq $False) {
-    echo "rebase fail"
     git diff --diff-filter=U
 
 
