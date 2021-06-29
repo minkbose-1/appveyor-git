@@ -83,7 +83,7 @@ ForEach ($File in $CACHE_LIST) {
 
 
 # Wait for timestamps to clear
-Start-Sleep -Milliseconds 3
+Start-Sleep -Milliseconds 1
 
 
 echo "`n"
