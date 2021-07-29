@@ -1,29 +1,24 @@
-if ($env:GIT_CLEAN -Eq "yes") {
-  cd $env:APPVEYOR_BUILD_FOLDER
+if (${env:GIT_CLEAN} -Eq "yes") {
+  cd ${env:APPVEYOR_BUILD_FOLDER}
 
-  echo "1"
-  move $env:GIT_ARCHIVE ..\
-  echo "2"
+  move ${env:GIT_ARCHIVE} ..\
   move .git* ..\
-  echo "3"
 
 
 
   cd ..
-  echo "4"
-  Remove-Item -Recurse -Force $env:APPVEYOR_BUILD_FOLDER
-  echo "5"
-  New-Item $env:APPVEYOR_BUILD_FOLDER -itemtype directory
+  Remove-Item -Recurse -Force ${env:APPVEYOR_BUILD_FOLDER}
+  New-Item -Path ${env:APPVEYOR_BUILD_FOLDER} -itemtype directory
   echo "6"
 
 
 
-  move $env:ARCHIVE $env:APPVEYOR_BUILD_FOLDER
+  move ${env:ARCHIVE $env:APPVEYOR_BUILD_FOLDER}
   echo "7"
-  move .git* $env:APPVEYOR_BUILD_FOLDER
+  move .git* ${env:APPVEYOR_BUILD_FOLDER}
   echo "8"
 
-  cd $env:APPVEYOR_BUILD_FOLDER
+  cd ${env:APPVEYOR_BUILD_FOLDER}
 }
 
 
@@ -32,8 +27,8 @@ if ($env:GIT_CLEAN -Eq "yes") {
 
 
 
-7z x $env:GIT_ARCHIVE -aoa
-del $env:GIT_ARCHIVE
+7z x ${env:GIT_ARCHIVE} -aoa
+del ${env:GIT_ARCHIVE}
 
 git add .
 
