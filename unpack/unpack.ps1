@@ -8,12 +8,13 @@ if (${env:GIT_CLEAN} -Eq "yes") {
 
   cd ..
   Remove-Item -Recurse -Force ${env:APPVEYOR_BUILD_FOLDER}
+  echo "5"
   New-Item -Path ${env:APPVEYOR_BUILD_FOLDER} -itemtype directory
   echo "6"
 
 
 
-  move ${env:ARCHIVE $env:APPVEYOR_BUILD_FOLDER}
+  move ${env:ARCHIVE} ${env:APPVEYOR_BUILD_FOLDER}
   echo "7"
   move .git* ${env:APPVEYOR_BUILD_FOLDER}
   echo "8"
